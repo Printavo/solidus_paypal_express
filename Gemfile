@@ -1,18 +1,16 @@
 source 'https://rubygems.org'
 
-branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
-gem "solidus", github: "solidusio/solidus", branch: branch
-
+gem 'sprockets', '~> 2.11.0'
+gem 'spree', github: 'spree/spree', branch: '2-4-stable'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 gem 'sqlite3'
-gem 'mysql2'
 gem 'pg'
 
 group :test do
-  gem 'capybara'
-  gem 'capybara-screenshot'
-  gem 'poltergeist'
+ gem 'require_all'
+ gem 'capybara'
+ gem 'capybara-screenshot'
+ gem 'poltergeist'
 end
-
-gem 'rubocop'
 
 gemspec

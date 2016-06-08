@@ -22,12 +22,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency "solidus_core", "~> 1.0"
+  s.add_dependency 'spree_core', '~> 2.4.0'
   s.add_dependency 'paypal-sdk-merchant', '1.117.2'
-
-  s.add_development_dependency "solidus", "~> 1.0"
-  s.add_development_dependency "solidus_auth_devise", "~> 1.2"
-  s.add_development_dependency "solidus_sample", "~> 1.0"
 
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'show_me_the_cookies', '~> 3.0.0'
