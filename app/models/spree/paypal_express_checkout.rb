@@ -1,7 +1,7 @@
 module Spree
   class PaypalExpressCheckout < ActiveRecord::Base
     def actions
-      ["capture", "credit"]
+      ["capture"]
     end
 
     def can_capture? payment
