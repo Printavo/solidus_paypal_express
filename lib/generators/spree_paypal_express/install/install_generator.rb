@@ -1,7 +1,6 @@
 module SpreePaypalExpress
   module Generators
     class InstallGenerator < Rails::Generators::Base
-
       class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_javascripts
@@ -20,7 +19,7 @@ module SpreePaypalExpress
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_paypal_express'
+        run 'bundle exec rake railties:install:migrations FROM=solidus_paypal_express'
       end
 
       def run_migrations
