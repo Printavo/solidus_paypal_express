@@ -19,7 +19,7 @@ module Spree
         end
       end
 
-      Spree::Admin::PaymentController.prepend(self)
+      Spree::Admin::PaymentsController.prepend(self)
     end
   end
 end
