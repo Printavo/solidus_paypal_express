@@ -1,4 +1,3 @@
-require 'paypal-sdk-merchant'
 module Spree
   class Gateway::PayPalExpress < Spree::PaymentMethod
     preference :use_new_layout, :boolean, default: true
