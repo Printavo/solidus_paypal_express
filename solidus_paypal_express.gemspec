@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_support'
   s.add_dependency 'paypal-sdk-merchant', '1.117.2'
 
-  s.add_development_dependency 'solidus', ['>= 1.3', '< 3']
+  s.add_development_dependency 'solidus', ['>= 1.3', '< 4']
   s.add_development_dependency 'solidus_auth_devise', ['>= 1.6', '< 3']
   s.add_development_dependency 'solidus_sample', ['>= 1.0', '< 3']
 
