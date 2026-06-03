@@ -1,9 +1,11 @@
 describe Spree::Gateway::PayPalExpress do
-  let(:gateway) { Spree::Gateway::PayPalExpress.create!(name: "PayPalExpress", environment: Rails.env) }
+  # `environment:` dropped — Spree removed the spree_payment_methods.environment
+  # column, so passing it raises UnknownAttributeError.
+  let(:gateway) { Spree::Gateway::PayPalExpress.create!(name: "PayPalExpress") }
 
   context "payment purchase" do
     let(:payment) do
-      payment = FactoryGirl.create(:payment, payment_method: gateway, amount: 10)
+      payment = FactoryBot.create(:payment, payment_method: gateway, amount: 10)
       allow(payment).to receive_messages source: mock_model(Spree::PaypalExpressCheckout, token: 'fake_token', payer_id: 'fake_payer_id', update: true)
       payment
     end

@@ -8,6 +8,8 @@ Gemfile.lock
 tmp
 pkg
 spec/dummy
+.bundle
+vendor/bundle
 rspec.failures
 .rvmrc
 .idea
