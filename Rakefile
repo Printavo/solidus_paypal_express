@@ -8,7 +8,7 @@ Bundler::GemHelper.install_tasks
 # Sprockets::Railtie::ManifestNeededError. Seed a minimal manifest. Defined as a
 # method (not a once-only rake task) because it must run more than once: the
 # solidus install generator rewrites app/assets and drops the file again.
-# (mirrors solidusio/solidus#3379, solidusio/solidus#6327)
+# (mirrors solidusio/solidus#3379 and #6122, which fixes issue #6327)
 def seed_manifest!
   dir = File.join('spec', 'dummy', 'app', 'assets', 'config')
   sh "mkdir -p #{dir}"
