@@ -1,3 +1,7 @@
+# Ruby 3.4+ extracted ostruct from the default gems; require it explicitly before
+# using OpenStruct (mirrors solidusio/solidus#5859).
+require 'ostruct'
+
 RSpec.describe Spree::Gateway::PayPalExpress do
   describe ".express_checkout_url" do
 

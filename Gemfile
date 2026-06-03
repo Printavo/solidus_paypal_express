@@ -9,8 +9,8 @@ gem 'solidus_auth_devise'
 gem 'rails', ENV['RAILS_VERSION'], require: false
 
 gem 'sqlite3'
-gem 'mysql2'
-gem 'pg'
+# mysql2/pg removed from the harness: the dummy app and test suite run on sqlite,
+# and the native mysql/pg client libs are not present in CI.
 
 # Ruby 3.4 extracted these from the default gems to bundled/external gems;
 # paypal-sdk-merchant 1.117.2 and factory_bot 4.x transitively require them.

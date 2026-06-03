@@ -26,11 +26,6 @@ require 'ffaker'
 require 'capybara/rspec'
 require 'capybara/rails'
 
-# Rebuild the test schema from db/schema.rb when migrations drift; the standard
-# rails_helper recovery for rake test_app's chained db:create/db:migrate
-# occasionally leaving the sqlite file without a loaded schema.
-ActiveRecord::Migration.maintain_test_schema!
-
 # poltergeist/PhantomJS is dead; guard the require so the JS feature spec is
 # simply skipped (env-blocked) rather than crashing the whole suite at load.
 begin
@@ -56,6 +51,10 @@ require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/url_helpers'
 
 require 'solidus_paypal_express/factories'
+# add_paths_and_load! only registers Spree core + lib factories; the deprecated
+# FactoryGirl.find_definitions used to auto-scan spec/factories, so register that
+# directory here to keep this extension's own factory available.
+FactoryBot.definition_file_paths << File.expand_path('factories', __dir__)
 Spree::TestingSupport::FactoryBot.add_paths_and_load!
 
 RSpec.configure do |config|

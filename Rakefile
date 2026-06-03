@@ -29,7 +29,7 @@ task :test_app do
   Rake::Task['extension:test_app'].invoke
 
   Rake::Task['test_app:seed_manifest'].invoke
-  Rake::Task['test_app:load_schema'].invoke
+  Rake::Task['test_app:migrate'].invoke
 end
 
 namespace :test_app do
@@ -45,13 +45,14 @@ namespace :test_app do
     end
   end
 
-  # rake test_app's chained db:create/db:migrate can leave the sqlite file with
-  # no schema; load it explicitly so the suite has tables. ActiveRecord::Migration
-  # .maintain_test_schema! in the spec helper is the standard recovery on top.
-  task :load_schema do
+  # rake test_app's chained `db:drop db:create db:migrate` can leave the sqlite
+  # file with no tables; re-run migrate as a separate bin/rails invocation so the
+  # suite actually has a populated schema. Migrate (not schema:load) so the
+  # engine's namespaced migration versions are recorded in schema_migrations.
+  task :migrate do
     Dir.chdir('spec/dummy') do
-      sh 'bin/rails db:environment:set RAILS_ENV=test'
-      sh 'bin/rails db:schema:load RAILS_ENV=test'
+      sh 'bundle exec rails db:environment:set RAILS_ENV=test'
+      sh 'bundle exec rails db:migrate RAILS_ENV=test'
     end
   end
 end
